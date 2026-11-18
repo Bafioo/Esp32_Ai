@@ -1,9 +1,5 @@
 <p align="center">
-  <img width="38" height="38" alt="Microphone" src="https://raw.githubusercontent.com/lucide-icons/lucide/0.468.0/icons/mic.svg">
-  &nbsp;&nbsp;
-  <img width="38" height="38" alt="Audio waveform" src="https://raw.githubusercontent.com/lucide-icons/lucide/0.468.0/icons/audio-lines.svg">
-  &nbsp;&nbsp;
-  <img width="38" height="38" alt="Microchip" src="https://raw.githubusercontent.com/lucide-icons/lucide/0.468.0/icons/cpu.svg">
+  <img src="docs/logo.svg" alt="ESP32-S3 Voice Control logo" width="88" height="88">
 </p>
 
 <h1 align="center">ESP32-S3 Voice Control</h1>
@@ -120,5 +116,3 @@ Esp32_Ai/
 ```
 
 Each installation supplies its own trained header. Git ignores local credentials, recordings and default model output directories.
-
-<sub>Icons by <a href="https://lucide.dev/">Lucide</a>.</sub>
