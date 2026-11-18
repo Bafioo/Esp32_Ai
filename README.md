@@ -15,13 +15,30 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Hardware-ESP32--S3-201d1d?style=flat-square" alt="ESP32-S3 hardware">
+  <img src="https://img.shields.io/badge/Training-Python-201d1d?style=flat-square&amp;logo=python&amp;logoColor=fdfcfc" alt="Python training">
+  <img src="https://img.shields.io/badge/Firmware-Arduino-201d1d?style=flat-square&amp;logo=arduino&amp;logoColor=fdfcfc" alt="Arduino firmware">
+</p>
+
+<p align="center">
   <a href="#hardware-and-software">Hardware</a> &middot;
   <a href="#1-collect-your-recordings">Record</a> &middot;
   <a href="#2-train-and-export">Train and export</a> &middot;
   <a href="#3-configure-and-flash-the-assistant">Flash</a>
 </p>
 
+---
+
 ## How it works
+
+```text
+Build: INMP441 microphone -> ESP32-S3 recorder -> WAV clips -> Python training -> voice_model.h
+Run:   INMP441 microphone -> ESP32-S3 inference -> wake phrase -> command -> local HTTP
+```
+
+- **Record** labeled audio over USB using the ESP32-S3 and INMP441.
+- **Train** a custom wake phrase and two commands in your chosen language, then evaluate on separate test recordings.
+- **Deploy** the exported TensorFlow Lite model as an Arduino C header. The ESP32-S3 runs recognition on the board and sends commands to the example Shelly device over Wi-Fi.
 
 The model scores overlapping two-second audio windows. When it detects your wake phrase, the firmware opens a command window. A recognized command triggers the configured Shelly endpoint. The serial monitor shows recognition scores and the HTTP result.
 
@@ -90,10 +107,17 @@ Open the serial monitor at **115200 baud**. Wait for Wi-Fi, speak your wake phra
 
 ## Repository layout
 
-- `firmware/VoiceControl/` — inference, audio capture and local device control
-- `training/AudioRecorder/` — USB audio capture firmware
-- `training/record.py` — labeled WAV collection
-- `training/train.py` — training, evaluation and C header export
+```text
+Esp32_Ai/
+├── firmware/
+│   └── VoiceControl/       # Arduino inference sketch and configuration template
+├── training/
+│   ├── AudioRecorder/     # ESP32-S3 USB audio recorder sketch
+│   ├── record.py          # Labeled WAV collection
+│   ├── train.py           # Training, evaluation and Arduino header export
+│   └── requirements.txt
+└── README.md
+```
 
 Each installation supplies its own trained header. Git ignores local credentials, recordings and default model output directories.
 
