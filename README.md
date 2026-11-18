@@ -78,10 +78,30 @@ The script trains on `dataset/train`, evaluates the exported TensorFlow Lite mod
 
 ## 3. Flash and test
 
-From the `training` directory, copy the model header and create your local configuration. If you already have a `secrets.h`, keep it and skip the second command.
+### Use the generated model header
+
+`voice_model.h` contains the trained TensorFlow Lite model as a C++ byte array named `voice_model`. From the `training` directory, copy the header next to `VoiceControl.ino`.
 
 ```powershell
-Copy-Item model_output/voice_model.h ../firmware/VoiceControl/
+Copy-Item model_output/voice_model.h ../firmware/VoiceControl/voice_model.h
+```
+
+The sketch already includes the header. During setup, TensorFlow Lite Micro reads the `voice_model` array, which is compiled into the firmware.
+
+```cpp
+#include "voice_model.h"
+
+// In the sketch's model setup:
+const auto* model = tflite::GetModel(voice_model);
+```
+
+After retraining, replace the header with the new export, then compile and upload the sketch again to update the model on the board.
+
+### Configure and upload the sketch
+
+If you already have a `secrets.h`, keep it and skip this command. Otherwise, run it from the `training` directory.
+
+```powershell
 Copy-Item ../firmware/VoiceControl/secrets.example.h ../firmware/VoiceControl/secrets.h
 ```
 
