@@ -4,13 +4,19 @@
 
 <h1 align="center">ESP32-S3 Keyword Spotting</h1>
 
-[![Hardware: ESP32-S3](https://img.shields.io/badge/hardware-ESP32--S3-201d1d?style=flat-square)](#hardware-and-software)
-[![Training: Python](https://img.shields.io/badge/training-Python-201d1d?style=flat-square)](#2-train-and-export)
-[![Firmware: Arduino](https://img.shields.io/badge/firmware-Arduino-201d1d?style=flat-square)](#3-flash-and-test)
+<p align="center">
+  <a href="#hardware-and-software"><img src="https://img.shields.io/badge/hardware-ESP32--S3-201d1d?style=flat-square" alt="Hardware: ESP32-S3"></a>
+  <a href="#2-train-and-export"><img src="https://img.shields.io/badge/training-Python-201d1d?style=flat-square" alt="Training: Python"></a>
+  <a href="#3-flash-and-test"><img src="https://img.shields.io/badge/firmware-Arduino-201d1d?style=flat-square" alt="Firmware: Arduino"></a>
+</p>
 
 Train a small speech recognition model to detect a wake phrase and two spoken commands. Record audio with an ESP32-S3 and an INMP441 microphone, train on your computer, and run inference on the board.
 
-![Workflow: record labeled WAV clips, train and export voice_model.h, then flash and test on the ESP32-S3.](docs/workflow.svg)
+## Workflow
+
+1. [Record labeled WAV clips](#1-record-training-and-test-audio).
+2. [Train and export the Arduino header](#2-train-and-export).
+3. [Flash and test on the ESP32-S3](#3-flash-and-test).
 
 ## Hardware and software
 
