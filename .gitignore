@@ -1,0 +1,12 @@
+secrets.h
+voice_model.h
+.env
+.venv/
+__pycache__/
+*.wav
+dataset*/
+model_output*/
+*.keras
+*.tflite
+*.bin
+build/
