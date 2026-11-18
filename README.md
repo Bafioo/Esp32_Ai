@@ -1,13 +1,12 @@
 <p align="center">
-  <img src="docs/logo.svg" alt="ESP32-S3 Voice Control logo" width="88" height="88">
+  <img src="docs/logo.svg" alt="ESP32-S3 Keyword Spotting logo" width="88" height="88">
 </p>
 
-<h1 align="center">ESP32-S3 Voice Control</h1>
+<h1 align="center">ESP32-S3 Keyword Spotting</h1>
 
 <p align="center">
   <strong>Your wake phrase. Your language. On-device recognition.</strong><br>
-  Train an ESP32-S3 with an INMP441 microphone to recognize two spoken commands.<br>
-  The included example switches a Shelly Multicolor Bulb Gen3 over local HTTP.
+  Train a small speech recognition model for the ESP32-S3 with an INMP441 microphone.
 </p>
 
 <p align="center">
@@ -29,19 +28,19 @@
 
 ```text
 Build: INMP441 microphone -> ESP32-S3 recorder -> WAV clips -> Python training -> voice_model.h
-Run:   INMP441 microphone -> ESP32-S3 inference -> wake phrase -> command -> local HTTP
+Run:   INMP441 microphone -> ESP32-S3 inference -> wake phrase -> recognized command
 ```
 
 - **Record** labeled audio over USB using the ESP32-S3 and INMP441.
 - **Train** a custom wake phrase and two commands in your chosen language, then evaluate on separate test recordings.
-- **Deploy** the exported TensorFlow Lite model as an Arduino C header. The ESP32-S3 runs recognition on the board and sends commands to the example Shelly device over Wi-Fi.
+- **Deploy** the exported TensorFlow Lite model as an Arduino C header. The ESP32-S3 runs recognition on the board.
 
-The model scores overlapping two-second audio windows. When it detects your wake phrase, the firmware opens a command window. A recognized command triggers the configured Shelly endpoint. The serial monitor shows recognition scores and the HTTP result.
+The model scores overlapping two-second audio windows. When it detects your wake phrase, the firmware opens a command window. The serial monitor shows recognition scores and command results.
 
 | Dataset label | What to record |
 | --- | --- |
-| `on` | Your phrase for turning the light on |
-| `off` | Your phrase for turning the light off |
+| `on` | Your phrase for the first command |
+| `off` | Your phrase for the second command |
 | `other` | Room noise, unrelated speech and phrases that sound similar |
 | `wake` | A wake phrase of your choice |
 
