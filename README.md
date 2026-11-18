@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/logo.svg" width="72" height="72" alt="">
+  <img src="docs/logo.svg" width="112" height="112" alt="">
 </p>
 
-# ESP32-S3 Keyword Spotting
+<h1 align="center">ESP32-S3 Keyword Spotting</h1>
 
 [![Hardware: ESP32-S3](https://img.shields.io/badge/hardware-ESP32--S3-343a40?style=flat-square)](#hardware-and-software)
 [![Training: Python](https://img.shields.io/badge/training-Python-343a40?style=flat-square)](#2-train-and-export)
