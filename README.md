@@ -1,4 +1,6 @@
-<img src="docs/logo.svg" width="72" height="72" alt="">
+<p align="center">
+  <img src="docs/logo.svg" width="72" height="72" alt="">
+</p>
 
 # ESP32-S3 Keyword Spotting
 
