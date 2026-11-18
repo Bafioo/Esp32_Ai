@@ -87,7 +87,8 @@ Copy the generated file from `training/model_output/voice_model.h` to **`firmwar
 ```text
 firmware/VoiceControl/
 ├── VoiceControl.ino
-└── voice_model.h
+├── voice_model.h
+└── secrets.h
 ```
 
 If your PowerShell session is still in the `training` directory, run:
@@ -107,15 +108,24 @@ const auto* model = tflite::GetModel(voice_model);
 
 After retraining, replace the header with the new export, then compile and upload the sketch again to update the model on the board.
 
-### Configure and upload the sketch
+### Create the local secrets header
 
-If you already have a `secrets.h`, keep it and skip this command. Otherwise, run it from the `training` directory.
+Copy [secrets.example.h](firmware/VoiceControl/secrets.example.h) to **`firmware/VoiceControl/secrets.h`**, next to `VoiceControl.ino` and `voice_model.h`. If you already have a `secrets.h`, edit that file directly. Otherwise, run this command from the `training` directory:
 
 ```powershell
 Copy-Item ../firmware/VoiceControl/secrets.example.h ../firmware/VoiceControl/secrets.h
 ```
 
-Set your Wi-Fi credentials and local action URLs in `secrets.h`. Open [VoiceControl.ino](firmware/VoiceControl/VoiceControl.ino), select **ESP32S3 Dev Module**, **16 MB flash**, and **OPI PSRAM**, then upload. Enable **USB CDC On Boot** for native USB serial.
+Open `secrets.h` in a text editor and replace the values inside the quotes:
+
+- `WifiSsid` and `WifiPassword` are your Wi-Fi network name and password.
+- `ShellyOnUrl` and `ShellyOffUrl` are the local HTTP URLs called when the sketch recognizes the `on` and `off` commands.
+
+The sketch already includes `secrets.h`. It uses these values to connect to Wi-Fi and send the command requests. If you change a value, compile and upload the sketch again. Keep your credentials in the Git-ignored `secrets.h`.
+
+### Upload the sketch
+
+Open [VoiceControl.ino](firmware/VoiceControl/VoiceControl.ino), select **ESP32S3 Dev Module**, **16 MB flash**, and **OPI PSRAM**, then upload. Enable **USB CDC On Boot** for native USB serial.
 
 Open the Serial Monitor at **115200 baud**. Say the wake phrase, wait for `LISTENING`, and say a command. Check the scores for both commands and watch for false activations during normal conversation.
 
