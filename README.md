@@ -51,17 +51,19 @@ Run these commands in PowerShell from the repository root. Replace `COM8` with y
 Set-Location training
 python -m pip install -r requirements.txt
 
-foreach ($label in 'on', 'off', 'other', 'wake') {
-    python record.py COM8 train $label 30
-}
+python record.py COM8 train on 30
+python record.py COM8 train off 30
+python record.py COM8 train other 30
+python record.py COM8 train wake 30
 ```
 
 Speak after the countdown. Each WAV clip contains two seconds of mono, 16-bit audio sampled at 16 kHz. Record the test clips in a separate session so they reflect how you actually plan to use the model.
 
 ```powershell
-foreach ($label in 'on', 'off', 'other', 'wake') {
-    python record.py COM8 test $label 5
-}
+python record.py COM8 test on 5
+python record.py COM8 test off 5
+python record.py COM8 test other 5
+python record.py COM8 test wake 5
 ```
 
 ## 2. Train and export
