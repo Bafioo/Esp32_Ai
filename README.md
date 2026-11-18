@@ -80,7 +80,17 @@ The script trains on `dataset/train`, evaluates the exported TensorFlow Lite mod
 
 ### Use the generated model header
 
-`voice_model.h` contains the trained TensorFlow Lite model as a C++ byte array named `voice_model`. From the `training` directory, copy the header next to `VoiceControl.ino`.
+`voice_model.h` contains the trained TensorFlow Lite model as a C++ byte array named `voice_model`.
+
+Copy the generated file from `training/model_output/voice_model.h` to **`firmware/VoiceControl/voice_model.h`**. Both paths are relative to the repository root. Place it in the same folder as `VoiceControl.ino`.
+
+```text
+firmware/VoiceControl/
+├── VoiceControl.ino
+└── voice_model.h
+```
+
+If your PowerShell session is still in the `training` directory, run:
 
 ```powershell
 Copy-Item model_output/voice_model.h ../firmware/VoiceControl/voice_model.h
