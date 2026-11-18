@@ -1,6 +1,25 @@
-# ESP32 Voice Control
+<p align="center">
+  <img width="38" height="38" alt="Microphone" src="https://raw.githubusercontent.com/lucide-icons/lucide/0.468.0/icons/mic.svg">
+  &nbsp;&nbsp;
+  <img width="38" height="38" alt="Audio waveform" src="https://raw.githubusercontent.com/lucide-icons/lucide/0.468.0/icons/audio-lines.svg">
+  &nbsp;&nbsp;
+  <img width="38" height="38" alt="Microchip" src="https://raw.githubusercontent.com/lucide-icons/lucide/0.468.0/icons/cpu.svg">
+</p>
 
-Train an ESP32-S3 to recognize a wake phrase and two spoken commands in your own language. An INMP441 microphone supplies the audio. Recognition runs on the board, and the example uses local HTTP requests to switch a Shelly Multicolor Bulb Gen3 on and off.
+<h1 align="center">ESP32-S3 Voice Control</h1>
+
+<p align="center">
+  <strong>Your wake phrase. Your language. On-device recognition.</strong><br>
+  Train an ESP32-S3 with an INMP441 microphone to recognize two spoken commands.<br>
+  The included example switches a Shelly Multicolor Bulb Gen3 over local HTTP.
+</p>
+
+<p align="center">
+  <a href="#hardware-and-software">Hardware</a> &middot;
+  <a href="#1-collect-your-recordings">Record</a> &middot;
+  <a href="#2-train-and-export">Train and export</a> &middot;
+  <a href="#3-configure-and-flash-the-assistant">Flash</a>
+</p>
 
 ## How it works
 
@@ -56,7 +75,7 @@ From the same training directory:
 python train.py --output model_output
 ```
 
-The script trains on `dataset/train`, evaluates the exported model on `dataset/test` and prints a confusion matrix. Inspect missed wakes and reversed commands before installing the model. For later training, use `--resume model_output/voice.keras` and a fresh output directory.
+The script trains on `dataset/train`, evaluates the exported model on `dataset/test` and prints a confusion matrix. It also writes the Arduino header to **`model_output/voice_model.h`**. Inspect missed wakes and reversed commands before installing the model. For later training, use `--resume model_output/voice.keras` and a fresh output directory.
 
 ## 3. Configure and flash the assistant
 
@@ -78,3 +97,4 @@ Open the serial monitor at **115200 baud**. Wait for Wi-Fi, speak your wake phra
 
 Each installation supplies its own trained header. Git ignores local credentials, recordings and default model output directories.
 
+<sub>Icons by <a href="https://lucide.dev/">Lucide</a>.</sub>
