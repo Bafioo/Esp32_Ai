@@ -4,17 +4,19 @@
 
 <h1 align="center">ESP32-S3 Keyword Spotting</h1>
 
-[![Hardware: ESP32-S3](https://img.shields.io/badge/hardware-ESP32--S3-343a40?style=flat-square)](#hardware-and-software)
-[![Training: Python](https://img.shields.io/badge/training-Python-343a40?style=flat-square)](#2-train-and-export)
-[![Firmware: Arduino](https://img.shields.io/badge/firmware-Arduino-343a40?style=flat-square)](#3-flash-and-test)
+[![Hardware: ESP32-S3](https://img.shields.io/badge/hardware-ESP32--S3-201d1d?style=flat-square)](#hardware-and-software)
+[![Training: Python](https://img.shields.io/badge/training-Python-201d1d?style=flat-square)](#2-train-and-export)
+[![Firmware: Arduino](https://img.shields.io/badge/firmware-Arduino-201d1d?style=flat-square)](#3-flash-and-test)
 
 Train a small speech recognition model to detect a wake phrase and two spoken commands. Record audio with an ESP32-S3 and an INMP441 microphone, train on your computer, and run inference on the board.
 
+![Workflow: record labeled WAV clips, train and export voice_model.h, then flash and test on the ESP32-S3.](docs/workflow.svg)
+
 ## Hardware and software
 
-- ESP32-S3 N16R8 with 16 MB flash and 8 MB OPI PSRAM, an INMP441 microphone, and a USB data cable.
-- Arduino IDE with Arduino-ESP32 (developed with 3.3.7) and a TensorFlow Lite Micro library that provides `tensorflow/lite/micro/micro_interpreter.h`.
-- Python with TensorFlow, NumPy, and pyserial. Install these packages in step 1.
+- `[+]` **Hardware.** ESP32-S3 N16R8 with 16 MB flash and 8 MB OPI PSRAM, an INMP441 microphone, and a USB data cable.
+- `[+]` **Firmware.** Arduino IDE with Arduino-ESP32 (developed with 3.3.7) and a TensorFlow Lite Micro library that provides `tensorflow/lite/micro/micro_interpreter.h`.
+- `[+]` **Training.** Python with TensorFlow, NumPy, and pyserial. Install these packages in step 1.
 
 | INMP441 | ESP32-S3 |
 | --- | --- |

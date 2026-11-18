@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="156" viewBox="0 0 580 156">
+  <rect width="580" height="156" fill="#201d1d"/>
+  <path d="M0 40h580" stroke="#646262"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#fdfcfc">
+    <text x="20" y="26" font-size="15" fill="#d0cdcd">esp32-s3 / workflow</text>
+    <g font-size="18">
+      <text x="20" y="69">[1] Record labeled WAV clips</text>
+      <text x="20" y="100">[2] Train and export voice_model.h</text>
+      <text x="20" y="131">[3] Flash and test on the ESP32-S3</text>
+    </g>
+  </g>
+</svg>
